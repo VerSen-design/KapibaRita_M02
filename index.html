@@ -6,8 +6,9 @@
   <title>Тест: Геодезические исследования</title>
   <style>
     :root{
-      --bg1:#070b18;
-      --bg2:#061a2a;
+      /* ✅ Новый фон (цветовая схема) */
+      --bg1:#071a1e;   /* темный бирюзовый */
+      --bg2:#12233a;   /* темный сине-стальной */
 
       --text: rgba(255,255,255,.94);
       --muted: rgba(255,255,255,.72);
@@ -33,10 +34,13 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
       color: var(--text);
+
+      /* ✅ Новый фон */
       background:
-        radial-gradient(1000px 600px at 20% 10%, rgba(124,92,255,.25), transparent 60%),
-        radial-gradient(800px 500px at 80% 20%, rgba(106,228,255,.20), transparent 55%),
+        radial-gradient(900px 520px at 18% 12%, rgba(106,228,255,.20), transparent 60%),
+        radial-gradient(900px 560px at 82% 18%, rgba(124,92,255,.18), transparent 58%),
         linear-gradient(160deg, var(--bg1), var(--bg2));
+
       min-height:100vh;
       overflow-x:hidden;
     }
@@ -61,7 +65,7 @@
       top:0;
       z-index:50;
       backdrop-filter: blur(14px);
-      background: rgba(7,11,24,.36);
+      background: rgba(7,11,24,.30);
       border-bottom: 1px solid rgba(255,255,255,.10);
     }
     .nav{
@@ -175,7 +179,10 @@
       overflow:hidden;
       min-height: 380px;
       border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
+      background:
+        radial-gradient(700px 420px at 30% 20%, rgba(106,228,255,.12), transparent 55%),
+        radial-gradient(700px 420px at 70% 30%, rgba(124,92,255,.10), transparent 55%),
+        rgba(255,255,255,.06);
       box-shadow: var(--shadow);
     }
     .heroMedia img{
@@ -543,12 +550,12 @@
     <section class="hero" aria-label="Обложка">
       <div class="heroGrid">
         <div class="heroMedia" aria-label="Фото электростанции">
-          <!-- Красивое фото электростанции (Unsplash). Можно заменить на своё при желании. -->
+          <!-- ✅ Надёжный источник: Wikimedia Commons (Special:FilePath) + fallback -->
           <img
-            src="https://images.unsplash.com/photo-1548611716-300d5c6c8c74?auto=format&fit=crop&w=2400&q=80"
-            alt="Электростанция и вода"
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/Blenheim%E2%80%93Gilboa_Hydroelectric_Power_Station.jpg?width=2200"
+            alt="Гидроэлектростанция"
             loading="eager"
-            referrerpolicy="no-referrer"
+            onerror="this.onerror=null; this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Hydro_electric_power_station.jpg?width=2200';"
           />
           <div class="heroOverlay">
             <div class="badge">15 вопросов · 4 варианта · 1 верный</div>
@@ -559,7 +566,7 @@
           </div>
 
           <div class="photoCredit">
-            Фото: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
+            Фото: <a href="https://commons.wikimedia.org/wiki/File:Blenheim%E2%80%93Gilboa_Hydroelectric_Power_Station.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>
           </div>
         </div>
 
@@ -674,9 +681,7 @@
     const ANTI_LONGEST_PROB = 0.85;
     const ANTI_LONGEST_TRIES = 12;
 
-    // ==========================
-    // НОВЫЙ ТЕСТ: вопросы/ответы + ключ
-    // ==========================
+    // Вопросы/ответы + ключ
     const QUESTIONS = [
       {
         q: "1. Что называют гидроэнергетикой?",
